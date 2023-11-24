@@ -16,7 +16,7 @@ import asyncio
 from typing import List
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from models import Base, async_engine, async_session, User, Post
+from models import Base, async_engine, Session, User, Post
 from jsonplaceholder_requests import fetch_users_data, fetch_posts_data
 
 
@@ -47,7 +47,7 @@ async def async_main():
         fetch_users_data(),
         fetch_posts_data()
     )
-    async with async_session() as session:
+    async with Session() as session:
         async with session.begin():
             for user in users_data:
                 session.add(User(id=user['id'], name=user['name'], username=user['username'], email=user['email']))

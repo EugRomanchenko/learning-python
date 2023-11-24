@@ -13,7 +13,7 @@ from sqlalchemy import Column, UniqueConstraint, ForeignKey
 from sqlalchemy import Integer
 from sqlalchemy import String
 from sqlalchemy import Text
-from sqlalchemy.orm import DeclarativeBase, relationship
+from sqlalchemy.orm import relationship, declarative_base
 from sqlalchemy.orm import declared_attr
 
 import os
@@ -24,14 +24,14 @@ async_engine = create_async_engine(
     url=PG_CONN_URI,
     echo=True,
 )
-async_session = async_sessionmaker(
+Session = async_sessionmaker(
     bind=async_engine,
     class_=AsyncSession,
     expire_on_commit=False,
 )
 
 
-class Base(DeclarativeBase):
+class Base:
     # __abstract__ = True
 
     @declared_attr.directive
@@ -39,6 +39,9 @@ class Base(DeclarativeBase):
         return f"{cls.__name__.lower()}s"
 
     id = Column(Integer, primary_key=True)
+
+
+Base = declarative_base(cls=Base)
 
 
 class Post(Base):
