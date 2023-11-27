@@ -22,11 +22,3 @@ async def fetch_users_data():
 
 async def fetch_posts_data():
     return await fetch_json(POSTS_DATA_URL)
-
-
-#async def main():
-#    result = await fetch_json(USERS_DATA_URL)
-#    print(result)
-
-#if __name__ == "__main__":
-#    asyncio.run(main())

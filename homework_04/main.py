@@ -54,8 +54,6 @@ async def async_main():
             for post in posts_data:
                 session.add(Post(id=post['id'], user_id=post['userId'], title=post['title'], body=post['body']))
 
-    await async_engine.dispose()
-
 
 def main():
     pass
