@@ -1,0 +1,42 @@
+version: "3"
+
+services:
+  app:
+    build:
+      dockerfile: ./docker-build/Dockerfile
+      context: ./
+    environment:
+      SQLALCHEMY_DATABASE_URI: postgresql+psycopg://username:password@pg:5432/blog
+    ports:
+      - "5050:80"
+    volumes:
+      - ./app/templates:/app/templates
+    depends_on:
+      pg:
+        condition: service_healthy
+
+  pg:
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: blog
+      POSTGRES_USER: username
+      POSTGRES_PASSWORD: password
+      PGDATA: /var/lib/postgresql/data
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - "8080:8080"
+
+volumes:
+  db-data:

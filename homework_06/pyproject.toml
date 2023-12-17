@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "blog"
+version = "0.1.0"
+description = "simple blog web app"
+authors = ["Eugeny Romanchenko <eromanchenko@assist.ru>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+flask = "^3.0.0"
+flask-sqlalchemy = "^3.1.1"
+flask-migrate = "^4.0.5"
+psycopg = {extras = ["binary", "pool"], version = "^3.1.15"}
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

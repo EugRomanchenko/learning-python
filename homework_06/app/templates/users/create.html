@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Create new user
+{% endblock %}
+
+{% block main %}
+    <div class="h1 m-sm-3">Create new user</div>
+
+    <form method="post"
+{#          class="form-control"#}
+          class="form-control row row-cols-1"
+    >
+        <label for="user-name" class="form-label">User name:</label>
+        <input type="text" class="form-control my-3"
+               id="user-name" name="user_name">
+
+        <label for="user-username" class="form-label">User username:</label>
+        <input type="text" class="form-control my-3"
+               id="user-username" name="user_username">
+
+        <label for="user-email" class="form-label">User email:</label>
+        <input type="email" class="form-control my-3"
+               id="user-email" name="user_email">
+
+        <input type="submit" class="btn btn-success my-3" value="Create">
+    </form>
+
+    <br>
+    <div>
+        <a href="{{ url_for('users_app.list') }}">Back to users list</a>
+    </div>
+{% endblock %}

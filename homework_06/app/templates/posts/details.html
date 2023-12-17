@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  Post #{{ post.id }} details
+{% endblock %}
+
+{% block main %}
+  <h1>Post #{{ post.id }}</h1>
+  <h2>{{ post.title }}</h2>
+
+  <br>
+  <h3>{{ post.body }}</h3>
+  <br>
+  <h3>{{ post.user_id }}</h3>
+  <br>
+  <div>
+    <a href="{{ url_for('posts_app.list') }}">Back to posts list</a>
+  </div>
+{% endblock %}

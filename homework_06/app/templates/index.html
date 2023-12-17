@@ -1,0 +1,17 @@
+{% extends 'base.html'%}
+
+{% block title %}
+  Интернет блог
+{% endblock %}
+
+{% block body %}
+  <div class="card w-75">
+    <div class="card-body">
+      <h5 class="card-title">Блог</h5>
+      <p class="card-text">Здесь вы сможете создать посты</p>
+      <a href="{{ url_for('posts_app.create') }}" class="btn btn-primary" style="background-color: #5d31b5;">
+        Каталог
+      </a>
+    </div>
+  </div>
+{% endblock %}
