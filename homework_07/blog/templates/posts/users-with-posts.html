@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  Users w/ posts
+{% endblock %}
+
+{% block body %}
+  <h1>Users</h1>
+  <h2>With posts</h2>
+
+  {% if users %}
+    <ul>
+      {% for user in users %}
+        <li>
+          <strong>{{ user }}</strong>
+          <ul>
+            {% for post in user.posts.all %}
+              <li>{{ post.title }}</li>
+            {% endfor %}
+          </ul>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <h3>No users yet</h3>
+  {% endif %}
+
+  {% include 'common/footer-common.html' %}
+{% endblock %}

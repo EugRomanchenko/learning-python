@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  Blog Homepage
+{% endblock %}
+
+{% block body %}
+  <h1>Welcome to our Blog!</h1>
+  <ul>
+    <li><a href="{% url 'blog:index' %}"
+    >Posts</a></li>
+    <li><a href="{% url 'blog:users-with-posts' %}"
+    >Users</a></li>
+  </ul>
+{% endblock %}
