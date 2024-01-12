@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  {{object.title}}
+{% endblock %}
+
+{% block body %}
+  <h1>{{object.title}}</h1>
+    {{object.user.name}}
+  <p></p>
+    {{object.body}}
+
+  {% include 'common/footer-common.html' %}
+{% endblock %}
