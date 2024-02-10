@@ -2,8 +2,12 @@ name: Python tests
 
 on: [push]
 
+defaults:
+  run:
+    working-directory: ./homework_10
+
 jobs:
-  run-tests:
+  run-tests-for-homework10:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -27,7 +31,7 @@ jobs:
       run: |
         python manage.py test
 
-    coverage:
+    coverage-for-homework10:
       runs-on: ubuntu-latest
       strategy:
         matrix:
